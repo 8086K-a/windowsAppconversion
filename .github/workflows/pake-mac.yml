@@ -37,6 +37,50 @@ jobs:
             url: "https://www.mornhub.lat"
             iconFile: "new/personlink图标.png"
 
+          - id: mornspeaker-cn
+            appName: "Mornspeaker"
+            urlSecret: MORNSPEAKER_URL_CN
+            url: "https://mornspeaker.mornscience.top/"
+            iconFile: "new/mornspeaker图标.png"
+          - id: mornspeaker-global
+            appName: "Mornspeaker"
+            urlSecret: MORNSPEAKER_URL_GLOBAL
+            url: "https://www.mornscience.onl/"
+            iconFile: "new/mornspeaker图标.png"
+
+          - id: mornclient-cn
+            appName: "Mornclient"
+            urlSecret: MORNCLIENT_URL_CN
+            url: "https://mornclient.mornscience.top/"
+            iconFile: "new/mornclient图标.png"
+          - id: mornclient-global
+            appName: "Mornclient"
+            urlSecret: MORNCLIENT_URL_GLOBAL
+            url: "https://www.mornscience.biz"
+            iconFile: "new/mornclient图标.png"
+
+          - id: morncoach-cn
+            appName: "Morncoach"
+            urlSecret: MORNCOACH_URL_CN
+            url: "http://morncoach.mornscience.top"
+            iconFile: "new/morncoach图标.png"
+          - id: morncoach-global
+            appName: "Morncoach"
+            urlSecret: MORNCOACH_URL_GLOBAL
+            url: "https://mornhub.biz"
+            iconFile: "new/morncoach图标.png"
+
+          - id: morntool-cn
+            appName: "Morntool"
+            urlSecret: MORNTool_URL_CN
+            url: "http://morntool.mornscience.top"
+            iconFile: "new/morntool图标.png"
+          - id: morntool-global
+            appName: "Morntool"
+            urlSecret: MORNTool_URL_GLOBAL
+            url: "https://www.mornhub.lol/"
+            iconFile: "new/morntool图标.png"
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4

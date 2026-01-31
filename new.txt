@@ -1,0 +1,27 @@
+sitehub
+国内版：
+https://site.mornscience.top/
+国际版：
+https://www.mornhub.help/
+
+
+personalink
+CN:https://personalink.mornscience.top
+INTL:https://www.mornhub.lat
+
+mornspeaker
+INTL: https://www.mornscience.onl/
+cn：https://mornspeaker.mornscience.top/
+
+mornclient
+cn：https://mornclient.mornscience.top/
+intl：https://www.mornscience.biz
+
+morncoach
+cn：http://morncoach.mornscience.top
+intl：https://mornhub.biz
+
+
+morntool
+cn：http://morntool.mornscience.top
+intl：https://www.mornhub.lol/
