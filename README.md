@@ -31,10 +31,10 @@ Morngpt 默认 URL 已预置：
 
 ### 2) 图标文件
 
-本仓库默认使用根目录下这 2 个 `.png`：
+本仓库默认使用 `new/` 文件夹下这 2 个 `.png`：
 
-- `sitehub图标.png`
-- `personalink图标.png`
+- `new/sitehub图标.png`
+- `new/personlink图标.png`
 
 如需替换，保持文件名不变即可，或去 workflow 里改映射。
 

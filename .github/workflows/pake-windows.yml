@@ -19,26 +19,26 @@ jobs:
             appName: "Sitehub"
             urlSecret: SITEHUB_URL_CN
             url: "https://site.mornscience.top/"
-            iconFile: "sitehub图标.png"
+            iconFile: "new/sitehub图标.png"
             installerLanguage: "zh-CN"
           - id: sitehub-global
             appName: "Sitehub"
             urlSecret: SITEHUB_URL_GLOBAL
             url: "https://www.mornhub.help/"
-            iconFile: "sitehub图标.png"
+            iconFile: "new/sitehub图标.png"
             installerLanguage: "en-US"
 
           - id: personalink-cn
             appName: "Personalink"
             urlSecret: PERSONALINK_URL_CN
             url: "https://personalink.mornscience.top"
-            iconFile: "personalink图标.png"
+            iconFile: "new/personlink图标.png"
             installerLanguage: "zh-CN"
           - id: personalink-global
             appName: "Personalink"
             urlSecret: PERSONALINK_URL_GLOBAL
             url: "https://www.mornhub.lat"
-            iconFile: "personalink图标.png"
+            iconFile: "new/personlink图标.png"
             installerLanguage: "en-US"
 
     steps:
