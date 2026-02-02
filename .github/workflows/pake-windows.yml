@@ -15,160 +15,19 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - id: sitehub-cn
-            appName: "Sitehub"
-            urlSecret: SITEHUB_URL_CN
-            url: "https://site.mornscience.top/admin"
-            iconFile: "new/sitehub图标.png"
-            installerLanguage: "zh-CN"
-          - id: sitehub-global
-            appName: "Sitehub"
-            urlSecret: SITEHUB_URL_GLOBAL
-            url: "https://www.mornhub.help/admin"
-            iconFile: "new/sitehub图标.png"
-            installerLanguage: "en-US"
-
-          - id: personalink-cn
-            appName: "Personalink"
-            urlSecret: PERSONALINK_URL_CN
-            url: "https://personalink.mornscience.top/admin"
-            iconFile: "new/personlink图标.png"
-            installerLanguage: "zh-CN"
-          - id: personalink-global
-            appName: "Personalink"
-            urlSecret: PERSONALINK_URL_GLOBAL
-            url: "https://www.mornhub.lat/admin"
-            iconFile: "new/personlink图标.png"
-            installerLanguage: "en-US"
-
-          - id: mornspeaker-cn
-            appName: "Mornspeaker"
-            urlSecret: MORNSPEAKER_URL_CN
-            url: "https://mornspeaker.mornscience.top/admin"
-            iconFile: "new/mornspeaker图标.png"
-            installerLanguage: "zh-CN"
-          - id: mornspeaker-global
-            appName: "Mornspeaker"
-            urlSecret: MORNSPEAKER_URL_GLOBAL
-            url: "https://www.mornscience.onl/admin"
-            iconFile: "new/mornspeaker图标.png"
-            installerLanguage: "en-US"
-
-          - id: mornclient-cn
-            appName: "Mornclient"
-            urlSecret: MORNCLIENT_URL_CN
-            url: "https://mornclient.mornscience.top/admin"
-            iconFile: "new/mornclient图标.png"
-            installerLanguage: "zh-CN"
-          - id: mornclient-global
-            appName: "Mornclient"
-            urlSecret: MORNCLIENT_URL_GLOBAL
-            url: "https://www.mornscience.biz/admin"
-            iconFile: "new/mornclient图标.png"
-            installerLanguage: "en-US"
-
-          - id: morncoach-cn
-            appName: "Morncoach"
-            urlSecret: MORNCOACH_URL_CN
-            url: "http://morncoach.mornscience.top/admin"
-            iconFile: "new/morncoach图标.png"
-            installerLanguage: "zh-CN"
-          - id: morncoach-global
-            appName: "Morncoach"
-            urlSecret: MORNCOACH_URL_GLOBAL
-            url: "https://mornhub.biz/admin"
-            iconFile: "new/morncoach图标.png"
-            installerLanguage: "en-US"
-
-          - id: morntool-cn
-            appName: "Morntool"
-            urlSecret: MORNTool_URL_CN
-            url: "http://morntool.mornscience.top/admin"
-            iconFile: "new/morntool图标.png"
-            installerLanguage: "zh-CN"
-          - id: morntool-global
-            appName: "Morntool"
-            urlSecret: MORNTool_URL_GLOBAL
-            url: "https://www.mornhub.lol/admin"
-            iconFile: "new/morntool图标.png"
-            installerLanguage: "en-US"
-
           - id: mornfront-cn
+            app: "mornfront"
+            version: "cn"
             appName: "Mornfront"
-            urlSecret: MORNFROnt_URL_CN
             url: "https://mornfront.mornscience.top/admin"
             iconFile: "new/mornfront图标.png"
             installerLanguage: "zh-CN"
           - id: mornfront-global
+            app: "mornfront"
+            version: "global"
             appName: "Mornfront"
-            urlSecret: MORNFROnt_URL_GLOBAL
             url: "https://www.mornscience.dev/admin"
             iconFile: "new/mornfront图标.png"
-            installerLanguage: "en-US"
-
-          - id: multigpt-cn
-            appName: "Multigpt"
-            urlSecret: MULTIGPT_URL_CN
-            url: "https://multigpt.mornscience.top/admin"
-            iconFile: "new/multigpt图标.png"
-            installerLanguage: "zh-CN"
-          - id: multigpt-global
-            appName: "Multigpt"
-            urlSecret: MULTIGPT_URL_GLOBAL
-            url: "https://morn.work/admin"
-            iconFile: "new/multigpt图标.png"
-            installerLanguage: "en-US"
-
-          - id: mornspeaker-cn
-            appName: "Mornspeaker"
-            urlSecret: MORNSPEAKER_URL_CN
-            url: "https://mornspeaker.mornscience.top/"
-            iconFile: "new/mornspeaker图标.png"
-            installerLanguage: "zh-CN"
-          - id: mornspeaker-global
-            appName: "Mornspeaker"
-            urlSecret: MORNSPEAKER_URL_GLOBAL
-            url: "https://www.mornscience.onl/"
-            iconFile: "new/mornspeaker图标.png"
-            installerLanguage: "en-US"
-
-          - id: mornclient-cn
-            appName: "Mornclient"
-            urlSecret: MORNCLIENT_URL_CN
-            url: "https://mornclient.mornscience.top/"
-            iconFile: "new/mornclient图标.png"
-            installerLanguage: "zh-CN"
-          - id: mornclient-global
-            appName: "Mornclient"
-            urlSecret: MORNCLIENT_URL_GLOBAL
-            url: "https://www.mornscience.biz"
-            iconFile: "new/mornclient图标.png"
-            installerLanguage: "en-US"
-
-          - id: morncoach-cn
-            appName: "Morncoach"
-            urlSecret: MORNCOACH_URL_CN
-            url: "http://morncoach.mornscience.top"
-            iconFile: "new/morncoach图标.png"
-            installerLanguage: "zh-CN"
-          - id: morncoach-global
-            appName: "Morncoach"
-            urlSecret: MORNCOACH_URL_GLOBAL
-            url: "https://mornhub.biz"
-            iconFile: "new/morncoach图标.png"
-            installerLanguage: "en-US"
-
-          - id: morntool-cn
-            appName: "Morntool"
-            urlSecret: MORNTool_URL_CN
-            url: "http://morntool.mornscience.top"
-            iconFile: "new/morntool图标.png"
-            installerLanguage: "zh-CN"
-          - id: morntool-global
-            appName: "Morntool"
-            urlSecret: MORNTool_URL_GLOBAL
-            url: "https://www.mornhub.lol/"
-            iconFile: "new/morntool图标.png"
             installerLanguage: "en-US"
 
     steps:
@@ -189,18 +48,14 @@ jobs:
       - name: Build with Pake
         shell: pwsh
         env:
-          PAKE_URL_SECRET: ${{ secrets[matrix.urlSecret] }}
-          PAKE_URL_FALLBACK: ${{ matrix.url }}
+          PAKE_URL: ${{ matrix.url }}
           PAKE_NAME: ${{ matrix.appName }}
           PAKE_ICON: ${{ github.workspace }}\\${{ matrix.iconFile }}
           PAKE_INSTALLER_LANG: ${{ matrix.installerLanguage }}
         run: |
-          $url = $env:PAKE_URL_SECRET
+          $url = $env:PAKE_URL
           if (-not $url) {
-            $url = $env:PAKE_URL_FALLBACK
-          }
-          if (-not $url) {
-            throw "Missing URL. Set secret '${{ matrix.urlSecret }}' or fill matrix.url for ${{ matrix.id }}"
+            throw "Missing URL for ${{ matrix.id }}"
           }
 
           $outDir = Join-Path $env:GITHUB_WORKSPACE ("dist\\" + "${{ matrix.id }}")
