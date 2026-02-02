@@ -25,3 +25,13 @@ intl：https://mornhub.biz
 morntool
 cn：http://morntool.mornscience.top
 intl：https://www.mornhub.lol/
+
+mornfront
+cn：https://mornfront.mornscience.top/
+INTL: https://www.mornscience.dev/
+
+
+multigpt
+cn：https://multigpt.mornscience.top/
+INTL：https://morn.work/
+
