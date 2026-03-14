@@ -1,0 +1,119 @@
+name: Build Windows Apps New1 (Pake)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    tags:
+      - "v*"
+
+jobs:
+  build-windows:
+    name: ${{ matrix.id }}
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - id: orbital-cn
+            app: "orbital"
+            version: "cn"
+            appName: "Orbital"
+            url: "https://orbital.mornscience.top/"
+            iconFile: "new1/orbital图标.png"
+            installerLanguage: "zh-CN"
+          - id: orbital-global
+            app: "orbital"
+            version: "global"
+            appName: "Orbital"
+            url: "https://www.mornscience.work/"
+            iconFile: "new1/orbital图标.png"
+            installerLanguage: "en-US"
+          - id: mornfake-cn
+            app: "mornfake"
+            version: "cn"
+            appName: "Mornfake"
+            url: "https://mornfake.mornscience.top/"
+            iconFile: "new1/mornfake图标.png"
+            installerLanguage: "zh-CN"
+          - id: mornfake-global
+            app: "mornfake"
+            version: "global"
+            appName: "Mornfake"
+            url: "https://www.mornhub.pics/"
+            iconFile: "new1/mornfake图标.png"
+            installerLanguage: "en-US"
+          - id: mornhome-cn
+            app: "mornhome"
+            version: "cn"
+            appName: "Mornhome"
+            url: "https://mornhome.mornscience.top/"
+            iconFile: "new1/mornhome.jpg"
+            installerLanguage: "zh-CN"
+          - id: mornhome-global
+            app: "mornhome"
+            version: "global"
+            appName: "Mornhome"
+            url: "https://mornhub.homes/"
+            iconFile: "new1/mornhome.jpg"
+            installerLanguage: "en-US"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install Pake CLI
+        run: npm install -g pake-cli
+
+      - name: Build with Pake
+        shell: pwsh
+        env:
+          PAKE_URL: ${{ matrix.url }}
+          PAKE_NAME: ${{ matrix.appName }}
+          PAKE_ICON: ${{ github.workspace }}\\${{ matrix.iconFile }}
+          PAKE_INSTALLER_LANG: ${{ matrix.installerLanguage }}
+        run: |
+          $url = $env:PAKE_URL
+          if (-not $url) {
+            throw "Missing URL for ${{ matrix.id }}"
+          }
+
+          $outDir = Join-Path $env:GITHUB_WORKSPACE ("dist\\" + "${{ matrix.id }}")
+          New-Item -ItemType Directory -Force -Path $outDir | Out-Null
+
+          Push-Location $outDir
+          pake $url --name $env:PAKE_NAME --icon $env:PAKE_ICON --keep-binary --installer-language $env:PAKE_INSTALLER_LANG --targets x64
+          Pop-Location
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.id }}
+          path: dist/${{ matrix.id }}/
+          if-no-files-found: error
+
+  release:
+    name: Release (tag)
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [build-windows]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-assets
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release-assets/**

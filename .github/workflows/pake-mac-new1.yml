@@ -1,0 +1,99 @@
+name: Build Mac Apps New1 (Pake)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    tags:
+      - "v*"
+
+jobs:
+  build-mac:
+    name: ${{ matrix.id }}
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - id: orbital-cn
+            appName: "Orbital"
+            url: "https://orbital.mornscience.top/"
+            iconFile: "new1/orbital图标.png"
+          - id: orbital-global
+            appName: "Orbital"
+            url: "https://www.mornscience.work/"
+            iconFile: "new1/orbital图标.png"
+          - id: mornfake-cn
+            appName: "Mornfake"
+            url: "https://mornfake.mornscience.top/"
+            iconFile: "new1/mornfake图标.png"
+          - id: mornfake-global
+            appName: "Mornfake"
+            url: "https://www.mornhub.pics/"
+            iconFile: "new1/mornfake图标.png"
+          - id: mornhome-cn
+            appName: "Mornhome"
+            url: "https://mornhome.mornscience.top/"
+            iconFile: "new1/mornhome.jpg"
+          - id: mornhome-global
+            appName: "Mornhome"
+            url: "https://mornhub.homes/"
+            iconFile: "new1/mornhome.jpg"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install Pake CLI
+        run: npm install -g pake-cli
+
+      - name: Build with Pake
+        env:
+          PAKE_URL: ${{ matrix.url }}
+          PAKE_NAME: ${{ matrix.appName }}
+          PAKE_ICON: ${{ github.workspace }}/${{ matrix.iconFile }}
+        run: |
+          url=$PAKE_URL
+          if [ -z "$url" ]; then
+            echo "Missing URL for ${{ matrix.id }}"
+            exit 1
+          fi
+
+          outDir="${GITHUB_WORKSPACE}/dist/${{ matrix.id }}"
+          mkdir -p "$outDir"
+
+          cd "$outDir"
+          pake "$url" --name "$PAKE_NAME" --icon "$PAKE_ICON" --keep-binary --targets dmg
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.id }}-mac
+          path: dist/${{ matrix.id }}/
+          if-no-files-found: error
+
+  release:
+    name: Release (tag)
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [build-mac]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-assets
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release-assets/**
